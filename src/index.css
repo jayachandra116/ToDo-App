@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color1: #ffeac5;
+  --color2: #ffdbb5;
+  --color3: #6c4e31;
+  --color4: #603f26;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}

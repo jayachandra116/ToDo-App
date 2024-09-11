@@ -1,0 +1,28 @@
+import React from "react";
+import TodoItem from "../TodoItem/TodoItem";
+
+import { ToDo } from "../../models/Todo";
+
+import classes from "./TodoList.module.css";
+
+type todoListProps = {
+  toDos: ToDo[];
+};
+
+const TodoList = ({ toDos }: todoListProps): React.JSX.Element => {
+  return (
+    <div className={classes["todo-list"]}>
+      <ul>
+        {toDos.length === 0 && (
+          <p style={{ color: "white", fontSize: "1.5rem" }}>No to-do items yet!</p>
+        )}
+        {toDos.length > 0 &&
+          toDos.map((toDo) => (
+            <TodoItem key={toDo.id} item={toDo}/>
+          ))}
+      </ul>
+    </div>
+  );
+};
+
+export default TodoList;
