@@ -7,18 +7,21 @@ import classes from "./TodoList.module.css";
 
 type todoListProps = {
   toDos: ToDo[];
+  onRemove: (id: string) => void;
 };
 
-const TodoList = ({ toDos }: todoListProps): React.JSX.Element => {
+const TodoList = ({ toDos, onRemove }: todoListProps): React.JSX.Element => {
   return (
     <div className={classes["todo-list"]}>
       <ul>
         {toDos.length === 0 && (
-          <p style={{ color: "white", fontSize: "1.5rem" }}>No to-do items yet!</p>
+          <p style={{ color: "white", fontSize: "1.5rem" }}>
+            No to-do items yet!
+          </p>
         )}
         {toDos.length > 0 &&
           toDos.map((toDo) => (
-            <TodoItem key={toDo.id} item={toDo}/>
+            <TodoItem key={toDo.id} item={toDo} onRemove={onRemove} />
           ))}
       </ul>
     </div>

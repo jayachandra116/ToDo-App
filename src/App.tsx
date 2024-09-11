@@ -28,6 +28,10 @@ function App() {
     ]);
   };
 
+  const removeTodoHandler = (id: string) => {
+    setToDos((prevToDos) => prevToDos.filter((todo) => todo.id !== id));
+  };
+
   return (
     <>
       <Header />
@@ -36,7 +40,7 @@ function App() {
           <NewTodo onAdd={addTodoHandler} />
         </div>
         <div>
-          <TodoList toDos={toDos} />
+          <TodoList toDos={toDos} onRemove={removeTodoHandler} />
         </div>
       </div>
     </>
