@@ -1,20 +1,35 @@
 import React, { useRef } from "react";
 
-import classes from "./NewTodo.module.css";
+// components
 import Button from "../UI/Button";
 
-type newTodoProps = {
-  onAdd: (text: string) => void;
-};
+// styling
+import classes from "./NewTodo.module.css";
 
-const NewTodo = ({ onAdd }: newTodoProps) => {
+// redux
+import { useAppDispatch } from "../../hooks";
+import { addToDo } from "../../store/todos-slice";
+
+const NewTodo = () => {
+  const dispatch = useAppDispatch();
+
   const todoTextRef = useRef<HTMLInputElement>(null);
 
   const onSubmit = (event: React.FormEvent): void => {
     event.preventDefault();
+    // extract values
     let enteredTodoText = todoTextRef.current!.value;
-    console.log(enteredTodoText);
-    onAdd(enteredTodoText);
+
+    // validation
+    if (!enteredTodoText) {
+      return;
+    }
+    console.log(`New to-do item text: ${enteredTodoText}`);
+
+    // update state
+    dispatch(addToDo(enteredTodoText));
+
+    // resetting form
     todoTextRef.current!.value = "";
   };
 

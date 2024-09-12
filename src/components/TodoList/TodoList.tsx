@@ -1,16 +1,17 @@
 import React from "react";
+
+// components
 import TodoItem from "../TodoItem/TodoItem";
 
-import { ToDo } from "../../models/Todo";
-
+// styling
 import classes from "./TodoList.module.css";
 
-type todoListProps = {
-  toDos: ToDo[];
-  onRemove: (id: string) => void;
-};
+// redux
+import { useAppSelector } from "../../hooks";
 
-const TodoList = ({ toDos, onRemove }: todoListProps): React.JSX.Element => {
+const TodoList = (): React.JSX.Element => {
+  const toDos = useAppSelector(state => state.todos.toDos);
+  
   return (
     <div className={classes["todo-list"]}>
       <ul>
@@ -21,7 +22,7 @@ const TodoList = ({ toDos, onRemove }: todoListProps): React.JSX.Element => {
         )}
         {toDos.length > 0 &&
           toDos.map((toDo) => (
-            <TodoItem key={toDo.id} item={toDo} onRemove={onRemove} />
+            <TodoItem key={toDo.id} item={toDo}/>
           ))}
       </ul>
     </div>
