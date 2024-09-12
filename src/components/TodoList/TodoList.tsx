@@ -15,7 +15,7 @@ const TodoList = ({ toDos, onRemove }: todoListProps): React.JSX.Element => {
     <div className={classes["todo-list"]}>
       <ul>
         {toDos.length === 0 && (
-          <p style={{ color: "white", fontSize: "1.5rem" }}>
+          <p style={{ color: "black", fontSize: "1.5rem" }}>
             No to-do items yet!
           </p>
         )}

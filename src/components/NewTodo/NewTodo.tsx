@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 
 import classes from "./NewTodo.module.css";
+import Button from "../UI/Button";
 
 type newTodoProps = {
   onAdd: (text: string) => void;
@@ -34,7 +35,9 @@ const NewTodo = ({ onAdd }: newTodoProps) => {
           />
         </div>
         <div className={classes["form-actions"]}>
-          <button type="submit">Add</button>
+          <Button type="submit" onClick={(event) => onSubmit(event)}>
+            Add
+          </Button>
         </div>
       </form>
     </div>
