@@ -6,12 +6,14 @@ import { ToDo } from "../models/Todo";
 interface ToDoState {
   toDos: ToDo[];
   filterText: string;
+  filterState: "all" | "active" | "done";
 }
 
 // define the initial state
 const toDosSliceInitialState: ToDoState = {
   toDos: [],
   filterText: "",
+  filterState: "all",
 };
 
 // slice
@@ -54,6 +56,12 @@ export const toDosSlice = createSlice({
     changeFilter: (state, action: PayloadAction<string>) => {
       state.filterText = action.payload;
     },
+    changeFilterState: (
+      state,
+      action: PayloadAction<"all" | "active" | "done">
+    ) => {
+      state.filterState = action.payload;
+    },
   },
 });
 
@@ -64,6 +72,7 @@ export const {
   markComplete,
   markInComplete,
   changeFilter,
+  changeFilterState,
 } = toDosSlice.actions;
 
 // reducer

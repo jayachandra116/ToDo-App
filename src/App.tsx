@@ -1,4 +1,5 @@
 import "./App.css";
+import Filters from "./components/Filter/Filters";
 
 import Header from "./components/Header";
 import NewTodo from "./components/NewTodo/NewTodo";
@@ -15,6 +16,7 @@ function App() {
         </div>
         <div>
           <SearchBox />
+          <Filters />
           <TodoList />
         </div>
       </div>
