@@ -7,7 +7,7 @@ interface ToDoState {
   toDos: ToDo[];
 }
 
-// define the initial state 
+// define the initial state
 const toDosSliceInitialState: ToDoState = {
   toDos: [],
 };
@@ -21,16 +21,39 @@ export const toDosSlice = createSlice({
       state.toDos.push({
         id: new Date().toISOString(),
         text: action.payload,
+        complete: false,
       });
     },
     removeToDo: (state, action: PayloadAction<string>) => {
       state.toDos = state.toDos.filter((todo) => todo.id !== action.payload);
     },
+    markComplete: (state, action: PayloadAction<string>) => {
+      let toDoIndex = state.toDos.findIndex(
+        (item) => item.id === action.payload
+      );
+      if (toDoIndex === -1) {
+        return state;
+      }
+      let todo = state.toDos[toDoIndex];
+      todo.complete = true;
+      state.toDos[toDoIndex] = todo;
+    },
+    markInComplete: (state, action: PayloadAction<string>) => {
+      let toDoIndex = state.toDos.findIndex(
+        (item) => item.id === action.payload
+      );
+      if (toDoIndex === -1) {
+        return state;
+      }
+      let todo = state.toDos[toDoIndex];
+      todo.complete = false;
+      state.toDos[toDoIndex] = todo;
+    },
   },
 });
 
 // actions
-export const { addToDo, removeToDo } = toDosSlice.actions;
+export const { addToDo, removeToDo, markComplete, markInComplete } = toDosSlice.actions;
 
 // reducer
 export default toDosSlice.reducer;
