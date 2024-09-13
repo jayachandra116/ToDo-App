@@ -2,6 +2,7 @@ import "./App.css";
 
 import Header from "./components/Header";
 import NewTodo from "./components/NewTodo/NewTodo";
+import SearchBox from "./components/SearchBox";
 import TodoList from "./components/TodoList/TodoList";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
           <NewTodo />
         </div>
         <div>
+          <SearchBox />
           <TodoList />
         </div>
       </div>

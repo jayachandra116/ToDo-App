@@ -10,20 +10,23 @@ import classes from "./TodoList.module.css";
 import { useAppSelector } from "../../hooks";
 
 const TodoList = (): React.JSX.Element => {
-  const toDos = useAppSelector(state => state.todos.toDos);
-  
+  const toDos = useAppSelector((state) => state.todos.toDos);
+  const filterText = useAppSelector((state) => state.todos.filterText);
+
+  const filteredToDos = filterText
+    ? toDos.filter((item) => item.text.toLowerCase().includes(filterText))
+    : toDos;
+
   return (
     <div className={classes["todo-list"]}>
       <ul>
-        {toDos.length === 0 && (
+        {filteredToDos.length === 0 && (
           <p style={{ color: "black", fontSize: "1.5rem" }}>
-            No to-do items yet!
+            No to-do items for this filter!
           </p>
         )}
-        {toDos.length > 0 &&
-          toDos.map((toDo) => (
-            <TodoItem key={toDo.id} item={toDo}/>
-          ))}
+        {filteredToDos.length > 0 &&
+          filteredToDos.map((toDo) => <TodoItem key={toDo.id} item={toDo} />)}
       </ul>
     </div>
   );
