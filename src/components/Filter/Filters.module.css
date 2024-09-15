@@ -9,13 +9,6 @@
   /* border: 1px solid blue; */
 }
 
-.active {
-  background-color: var(--color4);
-  color: var(--color1);
-  cursor: pointer;
-  box-shadow: 0px 2px #fff;
-}
-
 .filter-states button {
   background-color: var(--color1);
   color: var(--color4);
@@ -23,6 +16,13 @@
   border-radius: 4px;
   box-shadow: 0 1px #fff;
   font-family: inherit;
+}
+
+.filter-states button.active {
+  background-color: var(--color4);
+  color: var(--color1);
+  cursor: pointer;
+  box-shadow: 0px 2px #fff;
 }
 
 .filter-states button:hover {

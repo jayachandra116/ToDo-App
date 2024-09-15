@@ -17,19 +17,22 @@ const Filters = () => {
     <div className={classes["filter-states"]}>
       <Button
         onClick={() => toggleFilterState("all")}
-        className={currentFilterState === "all" ? "active" : ""}
+        classes={currentFilterState === "all" ? classes["active"] : ""}
+        title="Show all the items"
       >
         All
       </Button>
       <Button
         onClick={() => toggleFilterState("active")}
-        className={currentFilterState === "active" ? "active" : ""}
+        classes={currentFilterState === "active" ? classes["active"] : ""}
+        title="Show in-progress items"
       >
         Active
       </Button>
       <Button
         onClick={() => toggleFilterState("done")}
-        className={currentFilterState === "done" ? "active" : ""}
+        classes={currentFilterState === "done" ? classes["active"] : ""}
+        title="Show only done issues"
       >
         Completed
       </Button>

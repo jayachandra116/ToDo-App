@@ -38,6 +38,12 @@ const TodoList = (): React.JSX.Element => {
 
   return (
     <div className={classes["todo-list"]}>
+      {filteredToDosByState.length > 0 && (
+        <p>
+          Filtered {filteredToDosByState.length} out of {toDos.length} total
+          items
+        </p>
+      )}
       <ul>
         {filteredToDosByState.length === 0 && (
           <p style={{ color: "black", fontSize: "1.5rem" }}>
